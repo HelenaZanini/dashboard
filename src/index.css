@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 80%;    
+    margin: 0 auto;
+}
+
+header {
+    padding: 2rem;
+    position: fixed;
+    z-index: 255;
+    width: 80%;
+    height: 200px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #666;
+}
+
+.logo img {
+    margin-left: 2%;
+}
+
+.logo h1 {
+    margin-right: 2%;
+    align-self: center;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.nav {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-btn {
+    padding: 1.25rem;
+    background-color: #6699ff;
+    color: #001a4d;
+    border: none;
+    font-size: 1rem;
+}
+
+#root {
+    position: absolute;
+    top: 300px;
+
+}
+
+.App {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
