@@ -13,7 +13,7 @@ const data = () => (
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                 hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [65, 24]
+                data: [64, 24]
             },
             {
                 label: 'Não-Resolvidos',
@@ -22,7 +22,7 @@ const data = () => (
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                 hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [24, 8]
+                data: [20, 8]
             }
         ]
     });
@@ -41,8 +41,8 @@ class BarraHorizontal extends Component {
         this.state = {
             data: data()
         }
+            
     }
-
 
     render() {
         return (

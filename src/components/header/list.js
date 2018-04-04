@@ -3,7 +3,7 @@ import Button from './button.js';
 
 
 const cliente = ['BAML', 'Itau BBA', 'Bradesco', 'BTG Pactual', 'ING', 'HSBC', 'Santander', 'Deutsche Bank'];
-const tipo = ['ChatBot-Freshdesk', 'Email'];    
+const tipo = ['ChatBot-Freshdesk', 'Email'];
 const date = ['Periodo inicial: ', 'Periodo final: '];
 
 class List extends Component {
@@ -31,26 +31,31 @@ class List extends Component {
 
         }
 
+        const { filtrar, filtrarTodos } = this;
+
         return (
             <div>
 
                 <nav className='nav'>
 
                     <ul className='nav-list'>
+                        <li><input type='checkbox'></input>Todos</li>
                         {cli}
                     </ul>
 
                     <ul className='nav-list'>
+                        <li><input type='checkbox'></input>Todos</li>
                         {tip}
                     </ul>
 
                     <ul className='nav-list'>
+                        <li>Do inicio: <input type='checkbox'></input></li>
                         {dat}
                     </ul>
 
-                    <Button text="Filtrar dados" />
+                    <Button filtrar={filtrar} filtrarTodos={filtrarTodos} text="Filtrar dados" />
 
-                    <Button text="Limpar filtro" />
+                    <Button filtrar={filtrar} filtrarTodos={filtrarTodos} text="Limpar filtro" />
 
                 </nav>
 
