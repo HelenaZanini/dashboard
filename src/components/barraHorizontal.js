@@ -4,10 +4,10 @@ import { HorizontalBar } from 'react-chartjs-2'
 
 const data = () => (
     {
-        labels: ['Resolvidos', 'Não-Resolvidos'],
+        labels: ['Email', 'ChatBot-Freshdesk'],
         datasets: [
             {
-                label: 'Email',
+                label: 'Resolvidos',
                 backgroundColor: 'rgba(255,99,132,0.2)',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1,
@@ -16,7 +16,7 @@ const data = () => (
                 data: [65, 24]
             },
             {
-                label: 'ChatBot',
+                label: 'Não-Resolvidos',
                 backgroundColor: 'rgba(255,99,132,0.2)',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1,

@@ -4,16 +4,28 @@ import Header from './components/header/header.js';
 import BarraHorinzontal from './components/barraHorizontal';
 import Rosca from './components/rosca';
 
+const API = "";
+
 class App extends Component {
 
-  props = {
+  state = {
     chamados: {
-
+      Email: [],
+      ChatBot: [],
+      Clientes: [{nome: 'nome', valor: 'valor'}]
     }
   }
 
   listaChamados = () => {
-
+    axios
+    .get(`${API}/chamados`)
+    .then(response => {
+      this.setState({
+        chamados: response.data,
+      });
+    })
+    .catch(error => {
+    });
   }
 
   componentDidMount() {
