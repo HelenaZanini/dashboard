@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from './button.js';
-
 
 const cliente = ['BAML', 'Itau BBA', 'Bradesco', 'BTG Pactual', 'ING', 'HSBC', 'Santander', 'Deutsche Bank'];
 const tipo = ['ChatBot-Freshdesk', 'Email'];
@@ -31,7 +29,7 @@ class List extends Component {
 
         }
 
-        const { filtrar, filtrarTodos } = this;
+
 
         return (
             <div>
@@ -53,9 +51,9 @@ class List extends Component {
                         {dat}
                     </ul>
 
-                    <Button filtrar={filtrar} filtrarTodos={filtrarTodos} text="Filtrar dados" />
+                    <button className='nav-btn-style' type='submit' onClick={this.props.filtrar}>Filtrar dados</button>
 
-                    <Button filtrar={filtrar} filtrarTodos={filtrarTodos} text="Limpar filtro" />
+                    <button className='nav-btn-style' type='submit' onClick={this.props.filtrarTodos}>Limpar filtro</button>
 
                 </nav>
 

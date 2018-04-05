@@ -13,13 +13,22 @@ class App extends Component {
 
   state = {
     chamados: {
-      email: {resolvidos: 70, não_resolvidos: 24},
-      chatBot: {resolvidos: 24, não_resolvidos: 8},
-      clientes: [{nome: 'nome', valor: 0}]
+      email: {
+        resolvidos: 50,
+         não_resolvidos: 10
+        },
+      chatbot: {
+        resolvidos: 25,
+         não_resolvidos: 5
+        },
+      clientes: [
+        {
+        nome: 'nome',
+         valor: 0
+        }
+      ]
     }
   }
-
-
 
   listaChamados = () => {
     axios.get(`${API}/chamados`, {
@@ -34,33 +43,37 @@ class App extends Component {
     })
     .then(response => {
       console.log(response)
-/*       this.setState({
+       this.setState({
         chamados: response.data,
       });
- */    })
+    })
     .catch(error => {
     });
   }
 
-  
+   
 
-  componentDidMount() {     
+/*  componentWillMount() {     
     this.listaChamados();
-  }
+  }*/
 
-  filtrarTodos = () => {
-    this.listaChamados(params);
+  filtrarTodos = (ev) => {
+    console.log(ev);
+    ev.preventDefault();
+
+    this.listaChamados();
   }
 
   filtrar = () => {
     
     // Montar parametros da requisição
-    this.listaChamados(params);
+    this.listaChamados();
   }
 
   render() {
-
+    
     const { chamados } = this.state;
+    console.log(chamados)
     const {filtrar, filtrarTodos} = this;
 
     return (

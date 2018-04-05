@@ -51,7 +51,7 @@ class Rosca extends Component {
             <div>
                 <Doughnut data={this.state.data}
                     options={options}
-                    width="500" height="250" />
+                    width={500} height={250} />
             </div>
         );
     }
