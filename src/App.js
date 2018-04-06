@@ -11,33 +11,37 @@ let params = { cliente: [], canal: [], tempo: [] }
 
 class App extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   params = {
-  //     cliente: ["todas"],
-  //     canal: ["Email", "ChatBot"],
-  //     tempo: ["inicio"]
-  //   };
-  //   this.listaChamados(params);
-  //   this.state = {
-  //     data: {
-  //       email: {
-  //         resolvidos: 50,
-  //         não_resolvidos: 10
-  //       },
-  //       chatbot: {
-  //         resolvidos: 25,
-  //         não_resolvidos: 5
-  //       },
-  //       clientes: [
-  //         {
-  //           nome: 'nome',
-  //           valor: 0
-  //         }
-  //       ]
-  //     }
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+    //   params = {
+    //     cliente: ["todas"],
+    //     canal: ["Email", "ChatBot"],
+    //     tempo: ["inicio"]
+    //   };
+    //   this.listaChamados(params);
+    console.log('1st.');
+    
+    this.state = {
+      loading: false,
+      data: ''
+      //     data: {
+      //       email: {
+      //         resolvidos: 50,
+      //         não_resolvidos: 10
+      //       },
+      //       chatbot: {
+      //         resolvidos: 25,
+      //         não_resolvidos: 5
+      //       },
+      //       clientes: [
+      //         {
+      //           nome: 'nome',
+      //           valor: 0
+      //         }
+      //       ]
+      //     }
+    };
+  }
 
   // state = {
   //   data: {
@@ -58,7 +62,7 @@ class App extends Component {
   //   }
   // }
 
-  static defaultProps = {
+  /* static defaultProps = {
     data: {
       email: {
         resolvidos: 0,
@@ -75,7 +79,7 @@ class App extends Component {
         }
       ]
     }
-  }
+  } */
 
   componentWillMount() {
     params = {
@@ -83,7 +87,10 @@ class App extends Component {
       canal: ["Email", "ChatBot"],
       tempo: ["inicio"]
     };
-    this.listaChamados(params);
+
+    console.log('2.');
+    this.setState({ loading: true });
+    this.listaChamados(params)
 
   }
 
@@ -101,11 +108,11 @@ class App extends Component {
       .then(response => {
         console.log(dados);
         
-        this.props.data.email.resolvidos = response.data.email.resolvidos;
-        this.props.data.email.não_resolvidos = response.data.email.resolvidos;
-        this.props.data.chatbot.resolvidos = response.data.email.resolvidos;
-        this.props.data.chatbot.não_resolvidos = response.data.email.resolvidos;
-
+        console.log('5.');
+        this.setState({
+          data: response.data,
+          loading: false
+        });
       })
 
       .catch(error => {
@@ -120,7 +127,7 @@ class App extends Component {
       canal: ["Email", "ChatBot"],
       tempo: ["inicio"]
     };
-
+    this.setState({ loading: true });
     this.listaChamados(params);
   }
 
@@ -135,22 +142,29 @@ class App extends Component {
       canal: [],
       tempo: []
     };
+
     console.log(params);
+    this.setState({ loading: true });
     this.listaChamados(params);
   }
 
   render() {
-    console.log(this.props.data);
+
     const { filtrar, filtrarTodos } = this;
 
+    if (this.state.loading) {
+      return <h2>Carregando...</h2>;
+    }
+
+    console.log(this.state.data);
     return (
       <div className="App">
-        <Header filtrar={filtrar} filtrarTodos={filtrarTodos} />
+        <Header filtrar={filtrar} filtrarTodos={filtrarTodos} data={this.state.data} />
         <div className="pacote">
 
           <div className='Graficos'>
-            <BarraHorinzontal data={this.props.data} />
-            <Rosca data={this.props.data} />
+            <BarraHorinzontal data={this.state.data} />
+            <Rosca data={this.state.data} />
           </div>
 
         </div>

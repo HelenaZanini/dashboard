@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 
-const cliente = ['BAML', 'Itau BBA', 'Bradesco', 'BTG Pactual', 'ING', 'HSBC', 'Santander', 'Deutsche Bank'];
+
 const tipo = ['ChatBot-Freshdesk', 'Email'];
 const date = ['Periodo inicial: ', 'Periodo final: '];
 
 class List extends Component {
 
     render() {
+        
+        const cliente = [];
+        for (let i = 0; i < this.props.data.length; i++) {
+            cliente.push(this.props.data[i].nome)
+            
+        }      
+        
         const cli = [];
         const tip = [];
         const dat = [];
@@ -28,8 +35,6 @@ class List extends Component {
             dat.push(<li>{date[i]}<input type='date'></input></li>)
 
         }
-
-
 
         return (
             <div>
