@@ -1,0 +1,26 @@
+.filter {
+    padding: 10px 0 8px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom: 1px solid #ADADAD;
+}
+
+.filter-h3 {
+    margin-top: 2px;
+    color: #263973;
+}
+
+.filter-title {
+    padding-right: 5px;
+    color: #263973;
+}
+
+.filter-ch {
+    padding-top: 5px;
+}
+
+.btn-filtrar {
+    margin-right: 20px;
+}

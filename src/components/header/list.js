@@ -6,6 +6,23 @@ const date = ['Periodo inicial: ', 'Periodo final: '];
 
 class List extends Component {
 
+    handleFiltrar = (ev) => {
+        
+        ev.preventDefault();
+        
+        const data = {
+            cliente: [],
+            canal: [],
+            tempo: []
+        }
+        
+        //this.state...
+
+
+        
+        this.props.filtrar(data);
+    }
+
     render() {
         
         const cliente = [];
@@ -56,7 +73,7 @@ class List extends Component {
                         {dat}
                     </ul>
 
-                    <button className='nav-btn-style' type='submit' onClick={this.props.filtrar}>Filtrar dados</button>
+                    <button className='nav-btn-style' type='submit' onClick={this.handleFiltrar}>Filtrar dados</button>
 
                     <button className='nav-btn-style' type='submit' onClick={this.props.filtrarTodos}>Limpar filtro</button>
 

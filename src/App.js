@@ -1,99 +1,40 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Qs from 'qs';
-import './App.css';
-import Header from './components/header/header.js';
+
+// Dependencias do projeto
+// import Header from './components/header/header.js';
+import Title from './components/header/Header';
+import Filter from './components/nav/Navbar';
 import BarraHorinzontal from './components/barraHorizontal';
 import Rosca from './components/rosca';
+import './App.css';
+
+// Dependencias externas
+import axios from 'axios';
+import Qs from 'qs';
 
 const API = "https://private-ae7eb-chart4.apiary-mock.com";
-let params = { cliente: [], canal: [], tempo: [] }
+// const API = "https://sleepy-retreat-40862.herokuapp.com";
+let params = { cliente: ["todas"], canal: ["Email", "ChatBot"], tempo: ["inicio"] }
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    //   params = {
-    //     cliente: ["todas"],
-    //     canal: ["Email", "ChatBot"],
-    //     tempo: ["inicio"]
-    //   };
-    //   this.listaChamados(params);
-    console.log('1st.');
-    
-    this.state = {
-      loading: false,
-      data: ''
-      //     data: {
-      //       email: {
-      //         resolvidos: 50,
-      //         não_resolvidos: 10
-      //       },
-      //       chatbot: {
-      //         resolvidos: 25,
-      //         não_resolvidos: 5
-      //       },
-      //       clientes: [
-      //         {
-      //           nome: 'nome',
-      //           valor: 0
-      //         }
-      //       ]
-      //     }
-    };
+  state = {
+    loading: false,
+    data: ''
   }
 
-  // state = {
-  //   data: {
-  //     email: {
-  //       resolvidos: 50,
-  //       não_resolvidos: 10
-  //     },
-  //     chatbot: {
-  //       resolvidos: 25,
-  //       não_resolvidos: 5
-  //     },
-  //     clientes: [
-  //       {
-  //         nome: 'nome',
-  //         valor: 0
-  //       }
-  //     ]
-  //   }
-  // }
-
-  /* static defaultProps = {
-    data: {
-      email: {
-        resolvidos: 0,
-        não_resolvidos: 0
-      },
-      chatbot: {
-        resolvidos: 0,
-        não_resolvidos: 0
-      },
-      clientes: [
-        {
-          nome: '',
-          valor: 0
-        }
-      ]
-    }
-  } */
-
+  // Realiza a requisição padrão (variavel params) antes do componente renderizar 
   componentWillMount() {
-    params = {
-      cliente: ["todas"],
-      canal: ["Email", "ChatBot"],
-      tempo: ["inicio"]
-    };
 
-    console.log('2.');
+    console.log('1');
     this.setState({ loading: true });
     this.listaChamados(params)
 
   }
 
+  // Requisição unica do projeto, 
+  // recebe os parametros da requisição como "dados", retorna um setState 
+  // alterando a propriedade data do estado do componente passando os dados de retorno da requisição    
   listaChamados = (dados) => {
     axios.get(`${API}/chamados`, {
       params: {
@@ -107,8 +48,8 @@ class App extends Component {
     })
       .then(response => {
         console.log(dados);
-        
-        console.log('5.');
+
+        console.log('3');
         this.setState({
           data: response.data,
           loading: false
@@ -119,28 +60,24 @@ class App extends Component {
       });
   }
 
+
+  // Metodo para o botão redefinir, realiza a requisição padrão (variavel params)
   filtrarTodos = (ev) => {
 
     ev.preventDefault();
-    params = {
-      cliente: ["todas"],
-      canal: ["Email", "ChatBot"],
-      tempo: ["inicio"]
-    };
     this.setState({ loading: true });
     this.listaChamados(params);
   }
 
-  filtrar = (ev) => {
+  // Metodo para o botão redefinir, realiza a requisição baseada nas listas de seleção (altera a variavel params)
+  filtrar = (data) => {
 
-    ev.preventDefault();
-
-    // Montar parametros da requisição aqui
+    console.log(data);
 
     params = {
-      cliente: ["blob"],
-      canal: [],
-      tempo: []
+      cliente: data.cliente,
+      canal: data.canal,
+      tempo: data.tempo
     };
 
     console.log(params);
@@ -153,18 +90,24 @@ class App extends Component {
     const { filtrar, filtrarTodos } = this;
 
     if (this.state.loading) {
+      console.log("olar");
       return <h2>Carregando...</h2>;
     }
 
+    console.log("4");
     console.log(this.state.data);
     return (
       <div className="App">
-        <Header filtrar={filtrar} filtrarTodos={filtrarTodos} data={this.state.data} />
+        {/* <Header filtrar={filtrar} filtrarTodos={filtrarTodos} data={this.state.data} /> */}
+        <Title />
+        <Filter filtrar={filtrar} filtrarTodos={filtrarTodos} data={this.state.data}/>
+        
         <div className="pacote">
 
           <div className='Graficos'>
+            
             <BarraHorinzontal data={this.state.data} />
-            <Rosca data={this.state.data} />
+            <Rosca data={this.state.data.clientes} />
           </div>
 
         </div>

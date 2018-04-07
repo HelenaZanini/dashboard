@@ -15,7 +15,7 @@ class Header extends Component {
                         <h1>DashBoard de Desempenho do Sistema de Resolução de Chamados</h1>
                     </div>
 
-                    <List data={this.props.data.clientes} filtrarTodos={this.props.filtrarTodos} filtrar={this.props.filtrar}/>
+                    <List data={this.props.data} filtrarTodos={this.props.filtrarTodos} filtrar={this.props.filtrar}/>
 
                 </header>
 

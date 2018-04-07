@@ -16,8 +16,8 @@ class BarraHorizontal extends Component {
             datasets: [
                 {
                     label: 'Resolvidos',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: 'rgba(0,74,25,0.8)',
+                    borderColor: 'rgba(0,74,25,1)',
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
@@ -25,8 +25,8 @@ class BarraHorizontal extends Component {
                 },
                 {
                     label: 'Não-Resolvidos',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: 'rgba(0,178,74,0.6)',
+                    borderColor: 'rgba(0,178,74,1)',
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
@@ -45,6 +45,7 @@ class BarraHorizontal extends Component {
         
         return (
             <div>
+                
                 <HorizontalBar data={this.props.chartData}
                     options={this.state}
                     width={500} height={250} redraw />

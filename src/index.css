@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     width: 80%;    
     margin: 0 auto;
 }
@@ -52,14 +52,15 @@ header {
     color: #001a4d;
     border: none;
     font-size: 1rem;
-}
+} */
 
 .pacote {
     position: absolute;
-    top: 300px;
+    top: 200px;
 }
 
 .Graficos {
+    margin-left: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;

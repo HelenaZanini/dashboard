@@ -1,0 +1,17 @@
+
+.header {
+    padding: 10px 0 5px 0;
+    background-color: #263973;
+}
+
+.header img {
+    position: absolute;
+    left: 0;
+    padding-left: 30px;
+}
+
+.header h1 {
+    padding-left: 300px;
+    color: #ffffff;
+
+}
